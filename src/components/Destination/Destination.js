@@ -1,44 +1,145 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Col, Container, Button, Form, Row } from "react-bootstrap";
 import { useParams } from "react-router";
 import { UserContext } from "../../App";
 import "./Destination.css";
 import data from "../../Data/Data.json";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
 
 const Destination = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [newData, setNewData] = useState({
+        address1: "",
+        address2: "",
+        date: "",
+        isDistance: false,
+    });
     const { id } = useParams();
-    const vehicles = data.find((vehicle) => vehicle.id === id);
+    const vehicles = data.find((vehicle) => vehicle.id === parseInt(id));
     console.log(vehicles);
-
+    const { name, image, fare, passenger } = vehicles;
+    const [show, setShow] = useState(false);
+    const handleBlur = (e) => {
+        const updateNewData = { ...newData };
+        updateNewData[e.target.name] = e.target.value;
+        setNewData(updateNewData);
+    };
+    const handleClick = (e) => {
+        setShow(true);
+        e.preventDefault();
+    };
     return (
         <div>
             <Container>
                 <Row>
-                    <Col md={4}>
+                    <Col md={5}>
                         <div className="destination">
-                            <Form>
-                                <h4>Pick From</h4>
-                                <Form.Control size="lg" type="text" />
-                                <br />
+                            <form onSubmit={handleClick}>
                                 <h4>Pick To</h4>
-                                <Form.Control size="lg" type="text" />
-                            </Form>
-                            <br />
-                            <h5>Date</h5>
-                            <input
-                                className="form-control"
-                                type="date"
-                                name=""
-                            ></input>
-                            <br />
-                            <br />
-                            <Button size="lg" block>
-                                Search
-                            </Button>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    onBlur={handleBlur}
+                                    name="address1"
+                                    required
+                                />
+                                <br />
+                                <h4>Pick From</h4>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    onBlur={handleBlur}
+                                    name="address2"
+                                    required
+                                />
+                                <br />
+                                <input
+                                    className="form-control"
+                                    type="date"
+                                    name="date"
+                                    id=""
+                                />
+                                <br />
+                                <input
+                                    className="form-control"
+                                    type="submit"
+                                    value="search"
+                                />
+                            </form>
+                        </div>
+                        <br />
+                        <div>
+                            {show && (
+                                <div className="detail-show">
+                                    <div className="dist-place">
+                                        <h5>{newData.address1}</h5>
+                                        <h5>{newData.address2}</h5>
+                                        <h5>{newData.date}</h5>
+                                    </div>
+
+                                    <div className="final-dist">
+                                        <img
+                                            src={image}
+                                            alt=""
+                                            style={{
+                                                padding: "10px",
+                                                height: "100px",
+                                                width: "100px",
+                                            }}
+                                        />
+                                        <h5>{name}</h5>
+                                        <h5>
+                                            <FontAwesomeIcon
+                                                icon={faUserFriends}
+                                            />{" "}
+                                            {passenger}
+                                        </h5>
+                                        <h5>${fare}</h5>
+                                    </div>
+                                    <div className="final-dist">
+                                        <img
+                                            src={image}
+                                            alt=""
+                                            style={{
+                                                padding: "10px",
+                                                height: "100px",
+                                                width: "100px",
+                                            }}
+                                        />
+                                        <h5>{name}</h5>
+                                        <h5>
+                                            <FontAwesomeIcon
+                                                icon={faUserFriends}
+                                            />{" "}
+                                            {passenger}
+                                        </h5>
+                                        <h5>${fare}</h5>
+                                    </div>
+                                    <div className="final-dist">
+                                        <img
+                                            src={image}
+                                            alt=""
+                                            style={{
+                                                padding: "10px",
+                                                height: "100px",
+                                                width: "100px",
+                                            }}
+                                        />
+                                        <h5>{name}</h5>
+                                        <h5>
+                                            <FontAwesomeIcon
+                                                icon={faUserFriends}
+                                            />{" "}
+                                            {passenger}
+                                        </h5>
+                                        <h5>${fare}</h5>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </Col>
-                    <Col md={8}>
+                    <Col md={7}>
                         <iframe
                             className="map"
                             title="map"
@@ -48,6 +149,8 @@ const Destination = () => {
                     </Col>
                 </Row>
             </Container>
+            <br />
+            <br />
         </div>
     );
 };

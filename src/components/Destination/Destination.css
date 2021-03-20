@@ -2,7 +2,7 @@
     border: 1px solid gray;
     padding: 20px;
     margin-top: 50px;
-    height: 450px;
+    height: 350px;
     background-color: lightgray;
     border-radius: 10px;
 }
@@ -14,4 +14,24 @@
 }
 .dist-place {
     border: 1px solid gray;
+}
+.final-dist {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid gray;
+    background-color: lightgray;
+    border-radius: 10px;
+}
+.detail-show {
+    background-color: darkslategray;
+    padding: 10px;
+    border-radius: 10px;
+}
+.dist-place {
+    background-color: tomato;
+    border-radius: 10px;
+    padding: 20px;
 }

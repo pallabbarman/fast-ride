@@ -12,8 +12,7 @@ import {
 import "./Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { Button } from "react-bootstrap";
-
+import { Button, Container } from "react-bootstrap";
 
 const Login = () => {
     const [user, setUser] = useState({
@@ -21,6 +20,7 @@ const Login = () => {
         name: "",
         email: "",
         password: "",
+        confirmPassword: "",
     });
     initializeLoginFramework();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -49,7 +49,7 @@ const Login = () => {
     };
 
     const handleUserSubmit = (e) => {
-        if (newUser && user.email && user.password) {
+        if (newUser && user.password === user.confirmPassword && user.email) {
             createUserEmailAndPassword(
                 user.name,
                 user.email,
@@ -86,8 +86,9 @@ const Login = () => {
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "100px" }}>
+        <Container style={{ marginTop: "100px"}}>
             <div className="login">
+                {!newUser ? <h2>Login</h2> : <h2>Sign Up</h2>}
                 <form onSubmit={handleUserSubmit}>
                     {newUser && (
                         <input
@@ -96,6 +97,7 @@ const Login = () => {
                             name="name"
                             onBlur={handleBlur}
                             placeholder="Your Name"
+                            required
                         />
                     )}
                     <br />
@@ -105,6 +107,7 @@ const Login = () => {
                         name="email"
                         onBlur={handleBlur}
                         placeholder="Enter your email address"
+                        required
                     />
                     <br />
                     <input
@@ -113,9 +116,22 @@ const Login = () => {
                         onBlur={handleBlur}
                         name="password"
                         placeholder="Enter your password"
+                        required
                     />
                     <br />
+                    {newUser && (
+                        <input
+                            type="password"
+                            className="form-control"
+                            onBlur={handleBlur}
+                            name="confirmPassword"
+                            placeholder="Confirm password"
+                            required
+                        />
+                    )}
+                    <br />
                     <input
+                        className="submit-btn form-control"
                         type="submit"
                         value={newUser ? "Sign Up" : "Sign In"}
                     />
@@ -153,7 +169,7 @@ const Login = () => {
                     User {newUser ? "Account create" : "Logged In"} successfully
                 </p>
             )}
-        </div>
+        </Container>
     );
 };
 
