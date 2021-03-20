@@ -1,0 +1,12 @@
+.destination {
+    border: 1px solid gray;
+    padding: 20px;
+    margin-top: 50px;
+    height: 320px;
+    background-color: lightgray;
+    border-radius: 10px;
+}
+.map {
+    padding-left: 50px;
+    margin-top: 50px;
+}

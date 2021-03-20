@@ -5,6 +5,8 @@ import Home from "./components/Home/Home";
 import { createContext, useState } from "react";
 import Header from "./components/Header/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Destination from "./components/Destination/Destination";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 export const UserContext = createContext();
 
@@ -24,6 +26,9 @@ function App() {
                     <Route path="/login">
                         <Login></Login>
                     </Route>
+                    <PrivateRoute path="/destination">
+                        <Destination></Destination>
+                    </PrivateRoute>
                 </Switch>
             </Router>
         </UserContext.Provider>

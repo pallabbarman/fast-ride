@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import './Header.css';
+import "./Header.css";
 
 const Header = () => {
     return (
@@ -11,8 +11,11 @@ const Header = () => {
                     Fast Ride
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
+                <Navbar.Collapse
+                    className="justify-content-end"
+                    id="basic-navbar-nav"
+                >
+                    <Nav>
                         <Nav.Link as={Link} to="/home">
                             Home
                         </Nav.Link>

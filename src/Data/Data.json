@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Bike",
+        "image": "https://t3.ftcdn.net/jpg/00/27/35/36/360_F_27353698_nYNfdSxeR28gV3EUNdoRD6c1N3FM90bm.jpg",
+        "fare": 200
+    },
+    {
+        "id": 2,
+        "name": "Car",
+        "image": "https://www.easylinedrawing.com/wp-content/uploads/2019/07/cartoon_car_drawing_tutorial.png",
+        "fare": 500
+    },
+    {
+        "id": 3,
+        "name": "Bus",
+        "image": "https://freepikpsd.com/wp-content/uploads/2019/10/cartoon-bus-png-Transparent-Images-Free.png",
+        "fare": 150
+    },
+    {
+        "id": 4,
+        "name": "Train",
+        "image": "https://image.freepik.com/free-vector/modern-train-cartoon-in-red-vector_657058.jpg",
+        "fare": 100
+    }
+]
