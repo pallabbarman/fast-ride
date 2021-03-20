@@ -9,6 +9,11 @@ import {
     createUserEmailAndPassword,
     signInWithEmailAndPassword,
 } from "./LoginManager";
+import "./Login.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { Button } from "react-bootstrap";
+
 
 const Login = () => {
     const [user, setUser] = useState({
@@ -23,6 +28,7 @@ const Login = () => {
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } };
     const [newUser, setNewUser] = useState(false);
+
     const handleResponse = (res, redirect) => {
         setUser(res);
         setLoggedInUser(res);
@@ -42,7 +48,7 @@ const Login = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleUserSubmit = (e) => {
         if (newUser && user.email && user.password) {
             createUserEmailAndPassword(
                 user.name,
@@ -80,54 +86,67 @@ const Login = () => {
     };
 
     return (
-        <div style={{ textAlign: "center" }}>
-            {user.isSignIn ? (
-                <button onClick={signOut} type="button">
-                    Sign Out
-                </button>
-            ) : (
-                <button onClick={googleSignIn} type="button">
-                    Sign In
-                </button>
-            )}
-            <br />
-            <label htmlFor="newUser">
-                Sign Up{" "}
-                <input
-                    type="checkbox"
-                    onChange={() => setNewUser(!newUser)}
-                    name="newUser"
-                    id=""
-                />
-            </label>
-            <form onSubmit={handleSubmit}>
-                {newUser && (
+        <div style={{ textAlign: "center", marginTop: "100px" }}>
+            <div className="login">
+                <form onSubmit={handleUserSubmit}>
+                    {newUser && (
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="name"
+                            onBlur={handleBlur}
+                            placeholder="Your Name"
+                        />
+                    )}
+                    <br />
                     <input
                         type="text"
-                        name="name"
+                        className="form-control"
+                        name="email"
                         onBlur={handleBlur}
-                        placeholder="Your Name"
+                        placeholder="Enter your email address"
                     />
+                    <br />
+                    <input
+                        type="password"
+                        className="form-control"
+                        onBlur={handleBlur}
+                        name="password"
+                        placeholder="Enter your password"
+                    />
+                    <br />
+                    <input
+                        type="submit"
+                        value={newUser ? "Sign Up" : "Sign In"}
+                    />
+                </form>
+                <br />
+                <p>Don't have an account.</p>
+                <label htmlFor="newUser">
+                    Create an account{" "}
+                    <input
+                        type="checkbox"
+                        onChange={() => setNewUser(!newUser)}
+                        name="newUser"
+                        id=""
+                    />
+                </label>
+                <br />
+                <br />
+                {user.isSignIn ? (
+                    <Button onClick={signOut} type="button" variant="primary">
+                        Sign Out
+                    </Button>
+                ) : (
+                    <Button
+                        onClick={googleSignIn}
+                        type="button"
+                        variant="primary"
+                    >
+                        <FontAwesomeIcon icon={faGoogle} /> Sign In with Google
+                    </Button>
                 )}
-                <br />
-                <input
-                    type="text"
-                    name="email"
-                    onBlur={handleBlur}
-                    placeholder="Enter your email address"
-                    required
-                />
-                <br />
-                <input
-                    type="password"
-                    onBlur={handleBlur}
-                    name="password"
-                    placeholder="Enter your password"
-                    required
-                />
-                <br />
-                <input type="submit" value={newUser ? "Sign Up" : "Sign In"} />
-            </form>
+            </div>
             <p style={{ color: "red" }}>{user.error}</p>
             {user.success && (
                 <p style={{ color: "green" }}>

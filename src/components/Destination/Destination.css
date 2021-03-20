@@ -2,11 +2,16 @@
     border: 1px solid gray;
     padding: 20px;
     margin-top: 50px;
-    height: 320px;
+    height: 450px;
     background-color: lightgray;
     border-radius: 10px;
 }
 .map {
-    padding-left: 50px;
     margin-top: 50px;
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+}
+.dist-place {
+    border: 1px solid gray;
 }
