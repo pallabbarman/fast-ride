@@ -59,7 +59,7 @@ const Destination = () => {
                                     />
                                     <br />
                                     <input
-                                        className="form-control"
+                                        className="form-control search-btn"
                                         type="submit"
                                         value="search"
                                         onClick={() => setForm(false)}

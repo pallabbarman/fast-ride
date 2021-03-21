@@ -23,6 +23,8 @@ const Home = () => {
                     ))}
                 </Row>
             </Container>
+            <br />
+            <br />
         </div>
     );
 };
