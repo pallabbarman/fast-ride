@@ -5,7 +5,7 @@ import { UserContext } from "../../App";
 import "./Header.css";
 
 const Header = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [loggedInUser] = useContext(UserContext);
     return (
         <Navbar className="nav" expand="lg">
             <Container>

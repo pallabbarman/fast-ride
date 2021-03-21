@@ -1,9 +1,10 @@
 .card {
-    border-radius: 10px;
+    border-radius: 20px !important;
     width: 15rem;
-    margin-top: 120px;
     box-shadow: 5px 5px 10px gray;
     padding: 5px;
+    text-decoration: none !important;
+    margin-top: 100px;
 }
 .card Img {
     height: 250px;
@@ -13,3 +14,4 @@
     background-color: whitesmoke;
     cursor: pointer;
 }
+

@@ -10,7 +10,7 @@ const Home = () => {
     useEffect(() => {
         setVehicles(data);
     }, []);
-    
+
     return (
         <div className="home">
             <Container>

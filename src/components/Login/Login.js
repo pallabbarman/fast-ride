@@ -86,7 +86,7 @@ const Login = () => {
     };
 
     return (
-        <Container style={{ marginTop: "100px"}}>
+        <Container style={{ marginTop: "100px", minHeight: "100vh" }}>
             <div className="login">
                 {!newUser ? <h2>Login</h2> : <h2>Sign Up</h2>}
                 <form onSubmit={handleUserSubmit}>

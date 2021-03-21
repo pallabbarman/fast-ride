@@ -1,5 +1,6 @@
-/* .home{
-    background-image: url('../../Images/city.jpg');
+.home {
+    background-image: url("../../Images/city.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-} */
+    min-height: 100vh;
+}
