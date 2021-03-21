@@ -11,7 +11,6 @@ const Destination = () => {
     const [newData, setNewData] = useState({
         address1: "",
         address2: "",
-        date: "",
     });
     const { id } = useParams();
     const vehicles = data.find((vehicle) => vehicle.id === parseInt(id));

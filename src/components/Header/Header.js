@@ -5,7 +5,7 @@ import { UserContext } from "../../App";
 import "./Header.css";
 
 const Header = () => {
-    const [loggedInUser] = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
         <Navbar className="nav" expand="lg">
             <Container>
@@ -24,12 +24,19 @@ const Header = () => {
                         <Nav.Link as={Link} to="/destination/1">
                             Destination
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/login">
-                            <Button type="button">Login</Button>
-                        </Nav.Link>
                         <Nav.Link>
                             {loggedInUser.name || loggedInUser.email}
                         </Nav.Link>
+                        <Nav.Link as={Link} to="/login">
+                            <Button type="button">Login</Button>
+                        </Nav.Link>
+                        <Button
+                            style={{ margin: "8px 0px" }}
+                            onClick={() => setLoggedInUser({})}
+                            type="button"
+                        >
+                            Logout
+                        </Button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
